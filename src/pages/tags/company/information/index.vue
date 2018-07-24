@@ -33,12 +33,6 @@
           <img :src="authImg" width="500px" height="500px" alt="">
           <img slot="reference" class="aptitude-img" :src='authImg' alt="">
         </el-popover>
-        
-        <!-- <div class="date-range">
-          <p>有效期：
-            <p>{{authDateRange}}</p>
-          </p>
-        </div> -->
       </div>
     </div>
 
