@@ -1,0 +1,13 @@
+/*
+  这里统一修改饿了么组件样式
+  1.如果单独页面 需要修改样式 可在页面中修改  scoped 修饰后并不会影响后续样式
+*/
+
+/* 改变主题色变量 */
+$--color-primary: #94BF4B;
+// $--color-primary: lightblue;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
