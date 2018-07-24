@@ -45,6 +45,8 @@ body .el-popover {
 </style>
 
 <style scoped lang="scss">
+@import "../../styles/mixin";
+
 .main-f {
   position: absolute;
   right: 15px;
@@ -72,8 +74,7 @@ body .el-popover {
 }
 .main-e .main-d {
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  @include flex-column(start, start);
   right: 155px;
   left: 15px;
   position: absolute;
@@ -112,9 +113,7 @@ body .el-popover {
   color: black;
   height: 40px;
   line-height: 40px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  @include flex-row(flex-end, center);
   margin-left: 40px;
 }
 .reflash-p {
@@ -133,8 +132,7 @@ body .el-popover {
 }
 .container {
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  @include flex-column(start, start);
   margin-top: 85px;
   padding: 0 15px 0 15px;
 }

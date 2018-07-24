@@ -39,45 +39,50 @@
 </template>  
   
 <script>
-import validate from '../../../utils/validate.js'
-import zcountButton from '../../../components/zcountButton.vue'
-import zcodeImage from '../../../components/zcodeImage.vue'
-import { mapActions } from 'vuex'
+import validate from "../../../utils/validate.js";
+import zcountButton from "../../../components/zcountButton.vue";
+import zcodeImage from "../../../components/zcodeImage.vue";
+import { mapActions } from "vuex";
 
 export default {
   data() {
     return {
-      uuid: '',
+      uuid: "",
       account: {
-        mobile: '',
-        imgCode: '',
-        code: ''
+        mobile: "",
+        imgCode: "",
+        code: ""
       },
       rules: {
         mobile: validate.phone,
         imgCode: validate.imgCode,
         code: validate.code
       }
-    }
+    };
   },
   components: {
     zcountButton,
     zcodeImage
   },
   methods: {
-    ...mapActions(['setUserName', 'setUUID', 'setToken','setRole']),
+    ...mapActions(["setUserName", "setUUID", "setToken", "setRole"]),
 
     loading(name) {
-      this.setUserName('施海泉')
-      this.setUUID('1111')
-      this.setToken('搜索token')
-      this.setRole('权限')
+      this.setUserName("施海泉");
+      this.setUUID("1111");
+      this.setToken("搜索token");
+      this.setRole("权限");
       // this.$router.replace({ path: '/main' })
       // console.dir(this.$axios)
       // console.dir(this.$axios)
-      this.$axios.codeLogin({ sdas: 'adw',22:22 }).then(res => {
-        console.dir(res)
-      },err=>{console.dir(err)})
+      this.$axios.codeLogin({ sdas: "adw", 22: 22 }).then(
+        res => {
+          console.dir(res);
+        },
+        err => {
+          console.dir(err);
+        }
+      );
 
       // this.$refs[name].validate(valid => {
       //   if (valid) {
@@ -86,44 +91,34 @@ export default {
       //     return false
       //   }
       // })
-
-    
     }
   }
-}
+};
 </script>  
 
 <style lang="scss" scoped>
+@import "../../../styles/mixin";
+
 .label {
   background-color: white;
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
 }
 .forgetPassword,
 .input-item {
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
 }
 
 .label .form-control-password,
 .label .form-control-mobile {
   width: 320px;
   height: 40px;
-  // flex: 1;
-  // -webkit-flex: 1;
-  // -ms-flex: 1;
   font-size: 16px;
-  // background-color: white !important;
 }
 
 .label .form-control-code {
   width: 210px;
   height: 40px;
-  // flex: 1;
-  // -webkit-flex: 1;
-  // -ms-flex: 1;
   font-size: 16px;
-  // background-color: white !important;
 }
 </style>
 

@@ -1,6 +1,6 @@
 <template>
   <!--背景图-->
-  
+
   <div style='height:100%;width:100%'>
     <el-form ref="account" :rules="rules" :model="account">
       <el-form-item class='label' prop="mobile">
@@ -40,19 +40,19 @@
 </template>  
   
 <script>
-import validate from '../../../utils/validate.js'
-import zcodeImage from '../../../components/zcodeImage.vue'
-import zbutton from '../../../components/Button.vue'
-import { mapActions } from 'vuex'
+import validate from "../../../utils/validate.js";
+import zcodeImage from "../../../components/zcodeImage.vue";
+import zbutton from "../../../components/Button.vue";
+import { mapActions } from "vuex";
 
 export default {
   data() {
     return {
-      uuid: '',
+      uuid: "",
       account: {
-        mobile: '',
-        password: '',
-        imgCode: ''
+        mobile: "",
+        password: "",
+        imgCode: ""
       },
       rules: {
         mobile: validate.phone,
@@ -60,7 +60,7 @@ export default {
         imgCode: validate.imgCode
       }
       // ,methods:{
-    }
+    };
   },
 
   components: {
@@ -68,40 +68,41 @@ export default {
     zbutton
   },
   methods: {
-    ...mapActions(['setUserName', 'setUUID', 'setToken']),
+    ...mapActions(["setUserName", "setUUID", "setToken"]),
     loading(name) {
       // this.setUserName('2321')
       // this.setUUID('2321')
       // this.setToken('2321')
-      this.$axios.passwordLogin('/api/登录url', { "参数": '参数' }).then(res => {
-        console.dir(res)
-      },err=>{})
-
+      this.$axios.passwordLogin("/api/登录url", { 参数: "参数" }).then(
+        res => {
+          console.dir(res);
+        },
+        err => {}
+      );
       // this.$refs[name].validate(valid => {
       //   if (valid) {
       //     this.$router.replace({ path: '/main' })
-      //   } else {
+      // } else {
       //     return false
       //   }
       // })
     },
     findPassword() {
-      this.$router.replace({ path: '/findPassword' })
+      this.$router.replace({ path: "/findPassword" });
     }
   }
-}
+};
 </script>  
 
 <style lang="scss" scoped>
+@import "../../../styles/mixin";
 .label {
   background-color: white;
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
 }
 .forgetPassword,
 .input-item {
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
 }
 
 .label .form-control-password,

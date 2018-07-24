@@ -1,4 +1,6 @@
 <style lang="scss" scoped>
+@import "../../../styles/mixin";
+
 .outline {
   position: absolute;
   color: #4a4a4a;
@@ -14,62 +16,55 @@
   margin-bottom: 40px;
 }
 .staff {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex-column(center, center);
   height: 120px;
   width: 20%;
-}
-.staff-p {
-  margin-top: 20px;
-  font-size: 14px;
-  font-weight: bold;
+  &-p {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
 }
 .purchase {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.purchase-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-}
-
-.purchase-item {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.purchase-item-wrapper {
-  display: flex;
-  padding-left: 28px;
-  flex-direction: column;
-  justify-content: center;
-  width: 280px;
-  height: 150px;
-  border: 1px solid #e5e5e5;
-}
-.purchase-item-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-.purchase-item-contet {
-  color: #94bf4b;
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 25px;
-}
-.waybill-wrapper {
-  display: flex;
-  justify-content: space-between;
+  @include flex-row(space-between, flex-end);
+  &-wrapper {
+    @include flex-column(center, space-between);
+    margin-bottom: 40px;
+  }
+  &-item {
+    @include flex-row(space-between, start);
+    margin-top: 20px;
+    &-wrapper {
+      padding-left: 28px;
+      @include flex-column(center, start);
+      width: 280px;
+      height: 150px;
+      border: 1px solid #e5e5e5;
+    }
+    &-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &-contet {
+      color: #94bf4b;
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+  }
 }
 .waybill {
   width: 310px;
   margin-top: 20px;
+  &-wrapper {
+    @include flex-row(space-between, start);
+  }
+  &-content {
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+  }
 }
 
 .waybill-p,
@@ -79,16 +74,9 @@
   font-size: 16px;
   font-weight: bold;
 }
-.waybill-content {
-  font-size: 30px;
-  height: 30px;
-  line-height: 30px;
-  font-weight: bold;
-}
 
 .driver-cars {
-  display: flex;
-  justify-content: space-between;
+  @include flex-row(space-between, start);
   width: 100%;
   margin-top: 50px;
   margin-bottom: 65px;
@@ -97,69 +85,68 @@
 .driver,
 .cars {
   width: 50%;
-  display: flex;
-  flex-direction: column;
+  @include flex-column(start, space-between);
 }
 .driver-wrapper,
 .cars-wrapper {
-  display: flex;
-  justify-content: space-around;
+  @include flex-row(space-around, start);
   padding-top: 40px;
 }
-
-.goods-wrapper {
-  display: flex;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 60px;
-}
-.goods-left {
-  width: 200px;
-  margin-top: 15px;
-}
-.goods-left-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.goods-left-ton-wrapper {
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 40px;
-  margin-bottom: 10px;
+.goods- {
+  &wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  &left {
+    width: 200px;
+    margin-top: 15px;
+    &-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    &-ton-wrapper {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+  }
 }
 .chart {
   width: 100%;
   height: 500px;
 }
-.customer-wrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.customer-title {
-  height: 40px;
-  line-height: 40px;
-  font-weight: bold;
-  margin-right: 10px;
-}
-.customer-ton-title {
-  height: 40px;
-  line-height: 40px;
-  font-weight: bold;
-  margin-right: 20px;
-  margin-left: 100px;
-}
 
-.customer-ton {
-  height: 40px;
-  line-height: 40px;
-  font-weight: bold;
+.customer- {
+  &wrapper {
+    @include flex-row(start, center);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &title {
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  &ton {
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    &-title {
+      height: 40px;
+      line-height: 40px;
+      font-weight: bold;
+      margin-right: 20px;
+      margin-left: 100px;
+    }
+  }
 }
 </style>
-
-
 
 <template>
   <div class="outline">

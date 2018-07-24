@@ -1,7 +1,7 @@
 <template>
 
   <div class="note">
-    
+
     <div ref="account" class="login-container">
       <div class='login'>
         {{'找罐车SAAS系统'}}
@@ -26,28 +26,30 @@ export default {
   data() {
     return {
       flag: false
-    }
+    };
   },
   mounted() {
-    this.loginType(this.flag)
+    this.loginType(this.flag);
   },
   methods: {
     loginType(flag) {
       if (flag) {
-        this.$router.replace({ path: '/login/password' })
+        this.$router.replace({ path: "/login/password" });
       } else {
-        this.$router.replace({ path: '/login/code' })
+        this.$router.replace({ path: "/login/code" });
       }
     },
     changeLoginStyle(flag) {
-      this.flag = flag
-      this.loginType(this.flag)
-    },
+      this.flag = flag;
+      this.loginType(this.flag);
+    }
   }
-}
+};
 </script>  
 
 <style lang="scss" scoped>
+@import "../../styles/mixin";
+
 .exchange-a-select {
   color: #417505;
   width: 100px;
@@ -62,9 +64,7 @@ export default {
   text-align: center;
 }
 .exchange {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-row;
   font-size: 20px;
   margin-bottom: 20px;
   height: 40px;
@@ -79,9 +79,7 @@ export default {
   height: 100%;
   // background: url('../../assets/back.png') no-repeat center;
   // background-size: 100% 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-row;
   background-color: white;
   min-width: 1000px;
   min-height: 600px;

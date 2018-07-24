@@ -16,7 +16,6 @@
           <zinput v-model='model.newPassword1' type="text" maxlength='20' height='40px' width="320px" fontSize="14px" placeholder="输入新密码"></zinput>
         </el-form-item>
 
-
         <div style='color:red;display:flex;margin-bottom:10px;margin-top:14px'>*
           <p style='color:black'>确认新密码</p>
         </div>
@@ -24,111 +23,102 @@
           <zinput v-model='model.newPassword2' type="text" maxlength='20' height='40px' width="320px" fontSize="14px" placeholder="请确认密码"></zinput>
         </el-form-item>
 
-
-
       </div>
     </el-form>
   </zdialog>
 </template>
 
 <script>
-import zinput from '../../../components/zinput'
-import zdialog from '../../../components/Dialog'
-import validate from '../../../utils/validate'
+import zinput from "../../../components/zinput";
+import zdialog from "../../../components/Dialog";
+import validate from "../../../utils/validate";
 export default {
-  name: 'editRossle',
+  name: "editRossle",
   model: {
-    prop: 'dialogVisible',
-    event: 'changeVisible'
+    prop: "dialogVisible",
+    event: "changeVisible"
   },
-  props: [
-    'dialogVisible',
-    'confirm',
-  ],
+  props: ["dialogVisible", "confirm"],
   data() {
     return {
       editStaffDialogVisible: this.dialogVisible,
       model: {
-        oldPassword:'',
-        newPassword1: '',
-        newPassword2: '',
+        oldPassword: "",
+        newPassword1: "",
+        newPassword2: ""
       },
       rules: {
-        oldPassword:validate.oldPassword,
+        oldPassword: validate.oldPassword,
         newPassword1: validate.password1,
-        newPassword2: validate.password2,
+        newPassword2: validate.password2
       }
-    }
+    };
   },
 
   components: {
     zdialog,
-    zinput,
+    zinput
   },
   mounted() {
     this.rules.newPassword2.push({
       validator: (rule, value, callback) => {
         if (value !== this.model.newPassword1) {
-          callback(new Error('两次密码输入不一致'))
+          callback(new Error("两次密码输入不一致"));
         } else {
-          callback()
+          callback();
         }
       },
-      trigger: 'blur'
-    })
+      trigger: "blur"
+    });
   },
   watch: {
     dialogVisible: function(val) {
-      this.editStaffDialogVisible = val
+      this.editStaffDialogVisible = val;
     },
     editStaffDialogVisible: function(val) {
-      this.$emit('changeVisible', val)
-    },
-    
+      this.$emit("changeVisible", val);
+    }
   },
   methods: {
-    
     clearValue() {
-     
-      this.model.oldPassword = ''
-      this.model.newPassword1 = ''
-      this.model.newPassword2 = ''
-      
+      this.model.oldPassword = "";
+      this.model.newPassword1 = "";
+      this.model.newPassword2 = "";
     },
     clickConfirmEvent() {
-      
-      this.$refs['model'].validate(valid => {
+      this.$refs["model"].validate(valid => {
         if (valid) {
-          this.editStaffDialogVisible = false
+          this.editStaffDialogVisible = false;
           // this.confirm(this.model, this.explain,this.roleId);
           this.clearValue();
         } else {
-          return false
+          return false;
         }
-      })
+      });
     },
     clickCancelEvent() {
-
-      this.clearValue()
+      this.clearValue();
     }
   }
-}
+};
 </script>
 
 <style >
 </style>
 
 <style lang="scss" scoped>
-.edit-role {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.auth-error {
-  color: #f56c6c;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
-  margin-top: 4px;
-}
+// @import "../../../styles/mixin";
+// $size: 9px;
+
+// .edit-role {
+//   @include flex-column(start, start);
+//   width: 100%;
+// }
+// .auth-error {
+//   color: #f56c6c;
+//   font-size: $size;
+//   height: $size;
+//   line-height: $size;
+//   margin-top: 4px;
+// }
 </style>

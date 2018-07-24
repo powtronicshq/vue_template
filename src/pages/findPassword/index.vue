@@ -57,20 +57,20 @@
 </template>  
   
 <script>
-import validate from '../../utils/validate.js'
-import zcountButton from '../../components/zcountButton.vue'
-import zcodeImage from '../../components/zcodeImage.vue'
+import validate from "../../utils/validate.js";
+import zcountButton from "../../components/zcountButton.vue";
+import zcodeImage from "../../components/zcodeImage.vue";
 
 export default {
   data() {
     return {
-      uuid: '',
+      uuid: "",
       account: {
-        mobile: '',
-        imgCode: '',
-        code: '',
-        password1: '',
-        password2: ''
+        mobile: "",
+        imgCode: "",
+        code: "",
+        password1: "",
+        password2: ""
       },
       rules: {
         mobile: validate.phone,
@@ -79,7 +79,7 @@ export default {
         password1: validate.password1,
         password2: validate.password2
       }
-    }
+    };
   },
   components: {
     zcountButton,
@@ -89,44 +89,43 @@ export default {
     this.rules.password2.push({
       validator: (rule, value, callback) => {
         if (value !== this.account.password1) {
-          callback(new Error('两次密码输入不一致'))
+          callback(new Error("两次密码输入不一致"));
         } else {
-          callback()
+          callback();
         }
       },
-      trigger: 'blur'
-    })
+      trigger: "blur"
+    });
   },
   methods: {
     toLogin() {
-      this.$router.replace({ path: '/login' })
+      this.$router.replace({ path: "/login" });
     },
     loading(name) {
       // TODO 找回密码确认
       // this.$refs[name].validate(valid => {
       //   if (valid) {
-      //  
+      //
       //   } else {
       //     return false
       //   }
       // })
     }
   }
-}
+};
 </script>  
 
 <style lang="scss" scoped>
+@import "../../styles/mixin";
+
 .title {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
   margin: 38px 0 28px 0;
 }
 .title-content {
-  display: flex;
   width: 320px;
-  justify-content: space-between;
-  align-items: flex-end;
+  @include flex-row(space-between, flex-end);
 }
 .title-content-txt {
   color: #417505;
@@ -135,8 +134,7 @@ export default {
   line-height: 20px;
 }
 .back-login {
-  display: flex;
-  align-items: center;
+  @include flex-row(start, center);
 }
 .note {
   position: absolute;
@@ -146,9 +144,7 @@ export default {
   height: 100%;
   // background: url('../../assets/back.png') no-repeat center;
   // background-size: 100% 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-row(center, center);
   background-color: white;
   min-width: 1000px;
   min-height: 600px;
@@ -168,13 +164,11 @@ export default {
 
 .label {
   background-color: white;
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
 }
 .forgetPassword,
 .input-item {
-  display: flex;
-  justify-content: center;
+  @include flex-row(center, start);
 }
 
 .label .form-control-password,
