@@ -13,6 +13,7 @@ import 'element-ui/lib/theme-chalk/index.css'; // 饿了么 scss 样式文件
 import '../src/styles/element.scss';
 import locale from 'element-ui/lib/locale/lang/zh-CN'; // 饿了么UI控件 文字 中文
 import 'nprogress/nprogress.css'; // 顶部加载条 样式
+import 'babel-polyfill';
 
 import * as notice from './utils/notice';
 import {map} from './config/menus';
